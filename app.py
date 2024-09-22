@@ -26,3 +26,10 @@ tasks = [
 @app.get("/tasks")
 def show_tasks():
     return tasks
+
+
+@app.post("/tasks")
+def add_task(task: Task):
+    tasks.append(task.dict())
+
+    return {"message": "Task added successfully", "task": task}
